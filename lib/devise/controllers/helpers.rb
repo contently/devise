@@ -126,7 +126,7 @@ module Devise
 
           def current_#{mapping}
             logger.info "in devise, [current#{mapping}]"
-            warden.authenticate(scope: :#{mapping})
+            @current_#{mapping} = warden.authenticate(scope: :#{mapping})
           end
 
           def #{mapping}_session
