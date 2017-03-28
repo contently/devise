@@ -115,7 +115,7 @@ module Devise
             puts "in devise, [authenticate_#{mapping}]"
             opts[:scope] = :#{mapping}
             resp = warden.authenticate!(opts) if !devise_controller? || opts.delete(:force)
-            puts "current user is #{current_user}"
+            puts "current user is  #{current_user}"
             resp
           end
 
