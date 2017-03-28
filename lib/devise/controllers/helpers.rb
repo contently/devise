@@ -124,7 +124,8 @@ module Devise
           end
 
           def current_#{mapping}
-            # @current_#{mapping} ||= warden.authenticate(scope: :#{mapping})
+            puts "in devise, current_user"
+            warden.authenticate(scope: :#{mapping})
           end
 
           def #{mapping}_session
