@@ -112,9 +112,11 @@ module Devise
 
         class_eval <<-METHODS, __FILE__, __LINE__ + 1
           def authenticate_#{mapping}!(opts={})
-            puts "in devise, [authenticate_#{mapping}]"
             opts[:scope] = :#{mapping}
-            warden.authenticate!(opts) if !devise_controller? || opts.delete(:force)
+            puts "in devise, [authenticate_#{mapping}], opts: #{opts}"
+            resp = warden.authenticate!(opts) if !devise_controller? || opts.delete(:force)
+            puts "current user is #{current_user}"
+            resp
           end
 
           def #{mapping}_signed_in?
