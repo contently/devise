@@ -120,13 +120,13 @@ module Devise
           end
 
           def #{mapping}_signed_in?
-            val = !!current_#{mapping}
-            logger.info "in devise, [#{mapping}_signed_in?], value: {val}"
-            val
+            logger.info "in devise, [#{mapping}_signed_in?]"
+            !!current_#{mapping}
           end
 
           def current_#{mapping}
-            @current_#{mapping} ||= warden.authenticate(scope: :#{mapping})
+            logger.info "in devise, [current#{mapping}]"
+            warden.authenticate(scope: :#{mapping})
           end
 
           def #{mapping}_session
